@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestDB</string>
+    <string name="headerTextOnStartScreen">Header text on stars page</string>
+    <string name="headerTextOnRegistrationScreen">Register new user</string>
+    <string name="textFirstButton">Login</string>
+    <string name="hintLoginOnLoginPage">Login</string>
+    <string name="hintPasswordOnLoginPage">Password</string>
+    <string name="registrationBtn">Sign Up</string>
+    <string name="registrationNewUserBtn">Registration</string>
+</resources>
