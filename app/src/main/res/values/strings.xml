@@ -7,4 +7,5 @@
     <string name="hintPasswordOnLoginPage">Password</string>
     <string name="registrationBtn">Sign Up</string>
     <string name="registrationNewUserBtn">Registration</string>
+    <string name="login_mysql">LogIn MySQL</string>
 </resources>

@@ -15,6 +15,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appmetanit.helpers.PlaySound;
@@ -22,13 +25,21 @@ import com.example.appmetanit.validation.LoginValidator;
 import com.example.appmetanit.validation.PasswordValidator;
 import com.example.appmetanit.validation.ValidationLoginForm;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText emailField;
     EditText passwordField;
+    TextView test;
     Button loginBtn;
     Button registrationBtn;
     SQLiteDatabase db;
+    DBConnector DB;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -41,11 +52,16 @@ public class MainActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginButton);
         registrationBtn = findViewById(R.id.registrationBtn);
         db = getBaseContext().openOrCreateDatabase("app.db", MODE_PRIVATE, null);
-
     }
 
     protected void onStart(){
         super.onStart();
+
+
+
+
+//        DB = new DBConnector("root", "Qaz123wsx@");
+//        test.setText(DB.SelectResult("SELECT * FROM users"));
         passwordField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -106,6 +122,16 @@ public class MainActivity extends AppCompatActivity {
                             "- len more 5 symbols\n" +
                             "- contains 1 Upper case symbol", Toast.LENGTH_SHORT).show();
                 }
+
+
+                DB = new DBConnector("1");
+                DB.start();
+//                DB.returnData();
+
+
+
+
+
             }
         });
 

@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,12 +97,23 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.makeText(RegistrationActivity.this, "INVALID", Toast.LENGTH_SHORT).show();
                 }
                 Cursor cursor = db.rawQuery("SELECT * FROM users;", null);
-                TextView debugView = findViewById(R.id.fromDB);
-                debugView.setText("");
+                TableLayout debugView = findViewById(R.id.tableForUsers);
+
                 while (cursor.moveToNext()) {
                     String name = cursor.getString(0);
                     String password = cursor.getString(1);
-                    debugView.append("name: " + name + " password: " +password +"\n");
+                    TableRow row = new TableRow(RegistrationActivity.this);
+
+                    TextView email = new TextView(RegistrationActivity.this);
+                    email.setText(name);
+                    row.addView(email, new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+
+                    TextView passwordF = new TextView(RegistrationActivity.this);
+                    passwordF.setText(password);
+                    row.addView(passwordF, new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+
+                    debugView.addView(row);
+
                 }
 
             }
